@@ -4,7 +4,7 @@
   
   <head>
     <title>grummerly</title>
-    <link rel="shortcut icon" href="/grummerly-logo.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/static/grummerly-logo-transparent.ico" type="image/x-icon"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto"
@@ -100,8 +100,9 @@ p {
   </head>
 
   <body>
-    <h2>grummerly</h2>
-    <h3>make sure you have "Grammarly for Firefox" installed</h3>
+    <img width="100" src="/static/grummerly logo transparent.png">
+    <h2 style="margin-top:-4px; margin-bottom:-6px;">grummerly</h2>
+    <h3>a spellchecker for all</h3>
     <p>check your text now for mistakes and suggestions</p>
     <form action="/result" method="POST">
       <textarea
@@ -116,12 +117,13 @@ p {
     {% if text %}
     <p>{{text}}</p>
     {% endif %}
+
     {% if suggs %}
     <h3>suggestions</h3>
-    {% for sugg in suggs %}
+    {% for sugg in suggs%}
     <p>{{sugg}}</p>
 
-    {% endfor %}
+    {% endfor%}
     {% endif %}
 
     <footer>
