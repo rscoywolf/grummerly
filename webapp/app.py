@@ -16,7 +16,6 @@ def home():
 def result():
     inp = request.form.to_dict()
     text = inp['text']
-    print(text)
     s = spell(text)
     return render_template("index.html", text=text, suggs=s)
 
@@ -87,13 +86,14 @@ def similar(l, ind, fifty):
                     err[word].append(i)
 
         if err == {}:
-            print('not good enough')
             for i in all:
                 if i in ind:
                     if word not in err.keys():
                         err[word] = [i]
                     else:
                         err[word].append(i)
+        if err == {}:
+            err[word] = ['unknown word!']
 
     # print(err)
     return err
