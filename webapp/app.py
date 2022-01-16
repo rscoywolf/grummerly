@@ -43,7 +43,7 @@ def spell(s):
     l2 = []
     s = s.replace('-', ' ')
     s = s.replace('/', ' ')
-    s = ''.join(ch for ch in s if ch not in (punctuation or '1234567890'))
+    s = ''.join(ch for ch in s if ch not in (punctuation + '1234567890'))
     l2.append(s)
     for i in range(len(l2)):
         l2[i] = l2[i].split()
@@ -52,7 +52,7 @@ def spell(s):
     for i in l2:
         for w in i:
             w = w.lower()
-            if w not in l:
+            if w not in l and w not in '1234567890':
                 errors.append(w)
 
     suggs = similar(errors, l, fifty)
@@ -111,7 +111,7 @@ def syno(s, errors):
     s = s.replace('-', ' ')
     s = s.replace('/', ' ')
     s = ''.join(ch for ch in s if ch not in (
-        '!"#$%&\'()*+,-/:;<=>?@[\\]^_`{|}~' or '1234567890'))
+        '!"#$%&\'()*+,-/:;<=>?@[\\]^_`{|}~' + '1234567890'))
     l2 += (s) + ' '
     l2 = l2.split('.')
     for i in range(len(l2)):
