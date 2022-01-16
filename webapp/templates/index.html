@@ -91,6 +91,7 @@ pre{
   font-family: "Roboto", sans-serif;
   color: #0d1321;
   font-size: 20px;
+  text-align: left;
 }
 .spelling{
   color: #e84855
@@ -114,6 +115,16 @@ th{
   text-align: right;
   font-size: 20px;
 }
+.original-text{
+  padding-left: 
+}
+.text-center {
+  text-align: center;
+}
+
+.display-inline {
+  display: inline-block;
+}
 
 </style>
   </head>
@@ -133,7 +144,7 @@ th{
       <input type="Submit" class="btn-hover color-5" value="submit" /></button>
     </form>
     {% if text%}
-    <h3>suggestions</h3>
+    <h3 style="font-size: 40px;">suggestions</h3>
       {% if not suggs[0] and not suggs[1] and text%}
         <h3 style="color: #3e6259;">no suggestions! superb!</h3>
       {% endif%}
@@ -166,8 +177,12 @@ th{
 
     
     {% if text %}
-    <h3>original text:</h3>
-    <pre>{{text}}</pre>
+    <h3 style="font-size: 40px;">original text:</h3>
+    <div class="text-center">
+    <div class="display-inline">
+      <pre>{{text}}</pre>
+    </div>
+    </div>
     {% endif %}
     <footer>
       <p class="footer">
@@ -175,7 +190,7 @@ th{
         <script type="text/JavaScript">
           document.write(new Date().getFullYear());
         </script>
-        by ryan spurgeon, andrew goetz, marko buha, ayman k. siddiqui.
+        by ryan spurgeon, andrew goetz, marko buha, ayman k. siddiqui
       </p>
     </footer>
   </body>
