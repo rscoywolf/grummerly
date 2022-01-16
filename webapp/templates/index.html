@@ -127,6 +127,7 @@ th{
 }
 
 </style>
+
   </head>
 
   <body>
@@ -139,6 +140,7 @@ th{
         cols="100"
         name="text"
         placeholder="input your text here to check for mistakes and suggestions"
+        maxlength="1500"
       ></textarea>
       <br />
       <input type="Submit" class="btn-hover color-5" value="submit" /></button>
@@ -150,7 +152,7 @@ th{
       {% endif%}
       {% for i in range(2)%}
         {% if suggs[i] and i == 0%}
-          <h3 style="color: #e84855">possible mispellings</h3>
+          <h3 style="color: #e84855">possible misspellings</h3>
           <table class="center">
             {% for word1 in suggs[i]%}
               <tr>

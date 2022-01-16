@@ -100,6 +100,11 @@ def similar(l, ind, fifty):
 
 
 def syno(s):
+    with open('function-words.txt') as fh:
+        l3 = []
+        for line in fh:
+            line = line.rstrip()
+            l3.append(line)
     out = dict()
     l2 = ''
     s = s.rstrip()
@@ -112,11 +117,10 @@ def syno(s):
     l2 = l2.split('.')
     for i in range(len(l2)):
         l2[i] = l2[i].split()
-
     toomuch = []
     for i in l2:
         for w in i:
-            if i.count(w) >= 3 and w not in toomuch:
+            if i.count(w) >= 3 and w not in toomuch and w not in l3:
                 toomuch.append(w)
 
     with open('en_thesaurus.json') as fh:
