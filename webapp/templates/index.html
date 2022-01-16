@@ -17,6 +17,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 .buttons {
   margin: 10%;
@@ -66,25 +67,16 @@ body {
   background-color: #eef0f2;
 }
 textarea {
-  font-family: "Roboto", sans-serif;
   text-align: left;
 }
 
 h2 {
   color: #3e6259;
   font-size: 70px;
-  font-family: "Roboto", sans-serif;
 }
 h3 {
   color: #001011;
   font-size: 30px;
-  font-family: "Roboto", sans-serif;
-}
-
-#title {
-  color: #001011;
-  font-family: "Roboto", sans-serif;
-  font-size: 80px;
 }
 
 .footer {
@@ -94,7 +86,6 @@ h3 {
 p {
   color: #0d1321;
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
 }
 </style>
   </head>
@@ -103,13 +94,13 @@ p {
     <img width="100" src="/static/grummerly logo transparent.png">
     <h2 style="margin-top:-4px; margin-bottom:-6px;">grummerly</h2>
     <h3>a spellchecker for all</h3>
-    <p>check your text now for mistakes and suggestions</p>
+    <p>input your text below to check for mistakes and suggestions</p>
     <form action="/result" method="POST">
       <textarea
         rows="20"
         cols="100"
         name="text"
-        placeholder="enter text"
+        placeholder="enter text here"
       ></textarea>
       <br />
       <input type="Submit" class="btn-hover color-5" value="submit" /></button>

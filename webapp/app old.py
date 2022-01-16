@@ -25,6 +25,11 @@ if __name__ == '__main__':
     app.run(debug=True, port=5001)
 
 
+# main code
+class oops(Exception):
+    pass
+
+
 def spell(s):
     copy = s
     with open('english3.txt') as fh:
@@ -32,14 +37,6 @@ def spell(s):
         for line in fh:
             line = line.rstrip()
             l.append(line)
-
-    with open('58000.txt') as f:
-        fifty = []
-        for line in f:
-            line = line.rstrip()
-            fifty.append(line)
-
-    # master = set(l + fifty)
 
     l2 = []
     s = s.replace('-', ' ')
@@ -56,14 +53,16 @@ def spell(s):
             if w not in l:
                 errors.append(w)
 
-    suggs = similar(errors, l, fifty)
+    print(errors)
+
+    suggs = similar(errors, l)
 
     synonyms = syno(copy)
 
-    return (suggs, synonyms)
+    return suggs
 
 
-def similar(l, ind, fifty):
+def similar(l, ind):
     letters = 'abcdefghijklmnopqrstuvwxyz'
     err = dict()
     for word in l:
@@ -80,22 +79,13 @@ def similar(l, ind, fifty):
 
         all = set(deletes + transposes + replaces + inserts)
         for i in all:
-            if i in fifty:
+            if i in ind:
                 if word not in err.keys():
                     err[word] = [i]
                 else:
                     err[word].append(i)
 
-        if err == {}:
-            print('not good enough')
-            for i in all:
-                if i in ind:
-                    if word not in err.keys():
-                        err[word] = [i]
-                    else:
-                        err[word].append(i)
-
-    # print(err)
+    print(err)
     return err
 
 
@@ -127,15 +117,11 @@ def syno(s):
         sugs = []
         for i in x:
             if i['word'].lower() == w:
-                sugs.append(i['synonyms'][:7])
-        sugs2 = []
-        for l in sugs:
-            sugs2 += l
-        sugs2 = set(sugs2)
+                sugs.append(i['synonyms'])
 
         if w not in out.keys():
-            out[w] = sugs2
+            out[w] = sugs
         else:
-            out[w].append(sugs2)
+            out[w].append(sugs)
 
     return out
