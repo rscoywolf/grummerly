@@ -143,22 +143,22 @@ th{
               <tr>
                 <th style="color: #e84855;">{{word}}</th>
                 <td>  {% for suggestion in suggs[i][word]%}{{suggestion}}{% if not suggs[i][word][-1]==suggestion%},{% endif%} {% endfor%}</td>
-                
               </tr>
             {% endfor%}
           </table>
         {% elif suggs[i] and i == 1%}
-          {% for word in suggs[i]%}
-            <h3 style="color: #6290c8">repetitive words (synonyms on right)</h3>
-            <table class="center">
-              {% for word in suggs[i]%}
+          <h3 style="color: #6290c8">repetitive words (synonyms on right)</h3>
+          <table class="center">
+            {% for word in suggs[i]%}
                 <tr>
                   <th style="color: #6290c8;">{{word}}</th>
                   <td>  {% for suggestion in suggs[i][word]%}{{suggestion}}{% if not suggs[i][word][-1]==suggestion%},{% endif%} {% endfor%}</td>
                 </tr>
-              {% endfor%}
-            </table>
-          {% endfor%}
+            {% endfor%}
+          </table>
+            
+            
+          
         {% endif%}
       {% endfor%}
     {% endif %}
