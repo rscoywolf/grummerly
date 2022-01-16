@@ -94,10 +94,27 @@ pre{
 }
 .spelling{
   color: #e84855
+  font-size: 20px;
 }
 .synonym{
   color: #6290c8
+  font-size: 20px;
 }
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
+}
+td {
+  text-align: left;
+  color: #0d1321;
+  font-size: 20px;
+}
+th{
+  text-align: right;
+  font-size: 20px;
+}
+
 </style>
   </head>
 
@@ -120,13 +137,27 @@ pre{
     <h3>suggestions</h3>
       {% for i in range(2)%}
         {% if suggs[i] and i == 0%}
-          {% for word in suggs[i]%}
-            <p class='spelling'>{{word}}</p>
-      
-          {% endfor%}
+          <h3 style="color: #e84855">possible mispellings</h3>
+          <table class="center">
+            {% for word in suggs[i]%}
+              <tr>
+                <th style="color: #e84855;">{{word}}</th>
+                <td>  {% for suggestion in suggs[i][word]%}{{suggestion}}{% if not suggs[i][word][-1]==suggestion%},{% endif%} {% endfor%}</td>
+                
+              </tr>
+            {% endfor%}
+          </table>
         {% elif suggs[i] and i == 1%}
           {% for word in suggs[i]%}
-            <p class='synonym'>{{word}}</p>
+            <h3 style="color: #6290c8">repetitive words (synonyms on right)</h3>
+            <table class="center">
+              {% for word in suggs[i]%}
+                <tr>
+                  <th style="color: #6290c8;">{{word}}</th>
+                  <td>  {% for suggestion in suggs[i][word]%}{{suggestion}}{% if not suggs[i][word][-1]==suggestion%},{% endif%} {% endfor%}</td>
+                </tr>
+              {% endfor%}
+            </table>
           {% endfor%}
         {% endif%}
       {% endfor%}
