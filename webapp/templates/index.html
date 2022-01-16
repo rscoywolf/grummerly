@@ -94,20 +94,16 @@ p {
     <img width="100" src="/static/grummerly logo transparent.png">
     <h2 style="margin-top:-4px; margin-bottom:-6px;">grummerly</h2>
     <h3>a spellchecker for all</h3>
-    <p>input your text below to check for mistakes and suggestions</p>
     <form action="/result" method="POST">
       <textarea
         rows="20"
         cols="100"
         name="text"
-        placeholder="enter text here"
+        placeholder="input your text here to check for mistakes and suggestions"
       ></textarea>
       <br />
       <input type="Submit" class="btn-hover color-5" value="submit" /></button>
     </form>
-    {% if text %}
-    <p>{{text}}</p>
-    {% endif %}
 
     {% if suggs %}
     <h3>suggestions</h3>
@@ -117,13 +113,18 @@ p {
     {% endfor%}
     {% endif %}
 
+    
+    {% if text %}
+    <h3>original text:</h3>
+    <p>{{text}}</p>
+    {% endif %}
     <footer>
       <p class="footer">
         copyright
         <script type="text/JavaScript">
           document.write(new Date().getFullYear());
         </script>
-        by ryan spurgeon, etc.
+        by ryan spurgeon, andrew goetz, marko buha, ayman k. siddiqui.
       </p>
     </footer>
   </body>
