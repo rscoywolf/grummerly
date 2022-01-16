@@ -82,7 +82,7 @@ def similar(l, ind, fifty):
             if i in fifty:
                 if word not in err.keys():
                     err[word] = [i]
-                else:
+                elif i not in err[word]:
                     err[word].append(i)
 
         if err == {}:
@@ -90,12 +90,11 @@ def similar(l, ind, fifty):
                 if i in ind:
                     if word not in err.keys():
                         err[word] = [i]
-                    else:
+                    elif i not in err[word]:
                         err[word].append(i)
         if err == {}:
             err[word] = ['unknown word!']
 
-    # print(err)
     return err
 
 

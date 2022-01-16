@@ -110,10 +110,12 @@ td {
   text-align: left;
   color: #0d1321;
   font-size: 20px;
+  word-wrap: break-word;
 }
 th{
   text-align: right;
   font-size: 20px;
+  word-wrap: break-word;
 }
 .original-text{
   padding-left: 
@@ -153,7 +155,7 @@ th{
       {% for i in range(2)%}
         {% if suggs[i] and i == 0%}
           <h3 style="color: #e84855">possible misspellings</h3>
-          <table class="center">
+          <table width = screen.width class="center">
             {% for word1 in suggs[i]%}
               <tr>
                 <th style="color: #e84855;">{{word1}}</th>
@@ -163,7 +165,7 @@ th{
           </table>
         {% elif suggs[i] and i == 1%}
           <h3 style="color: #6290c8">repetitive words</h3>
-          <table class="center">
+          <table width = screen.width class="center">
             {% for word2 in suggs[i]%}
               <tr>
                 <th style="color: #6290c8;">{{word2}}</th>
