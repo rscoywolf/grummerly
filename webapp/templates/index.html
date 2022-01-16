@@ -132,36 +132,38 @@ th{
       <br />
       <input type="Submit" class="btn-hover color-5" value="submit" /></button>
     </form>
-
-    {% if suggs %}
+    {% if text%}
     <h3>suggestions</h3>
+      {% if not suggs[0] and not suggs[1] and text%}
+        <h3 style="color: #3e6259;">no suggestions! superb!</h3>
+      {% endif%}
       {% for i in range(2)%}
         {% if suggs[i] and i == 0%}
           <h3 style="color: #e84855">possible mispellings</h3>
           <table class="center">
-            {% for word in suggs[i]%}
+            {% for word1 in suggs[i]%}
               <tr>
-                <th style="color: #e84855;">{{word}}</th>
-                <td>  {% for suggestion in suggs[i][word]%}{{suggestion}}{% if not suggs[i][word][-1]==suggestion%},{% endif%} {% endfor%}</td>
+                <th style="color: #e84855;">{{word1}}</th>
+                <td>  {% for suggestion1 in suggs[i][word1]%}{{suggestion1}}{% if not suggs[i][word1][-1]==suggestion1%},{% endif%} {% endfor%}</td>
               </tr>
             {% endfor%}
           </table>
         {% elif suggs[i] and i == 1%}
           <h3 style="color: #6290c8">repetitive words (synonyms on right)</h3>
           <table class="center">
-            {% for word in suggs[i]%}
-                <tr>
-                  <th style="color: #6290c8;">{{word}}</th>
-                  <td>  {% for suggestion in suggs[i][word]%}{{suggestion}}{% if not suggs[i][word][-1]==suggestion%},{% endif%} {% endfor%}</td>
-                </tr>
+            {% for word2 in suggs[i]%}
+              <tr>
+                <th style="color: #6290c8;">{{word2}}</th>
+                <td>  {% for suggestion2 in suggs[i][word2]%}{{suggestion2}}{% if not suggs[i][word2][-1]==suggestion2%},{% endif%} {% endfor%}</td>
+              </tr>
             {% endfor%}
           </table>
             
-            
-          
         {% endif%}
       {% endfor%}
-    {% endif %}
+    {% else%}
+        <h3>you didn't input any text!</h3>
+    {% endif%}
 
     
     {% if text %}
