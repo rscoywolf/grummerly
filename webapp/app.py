@@ -57,7 +57,7 @@ def spell(s):
 
     suggs = similar(errors, l, fifty)
 
-    synonyms = syno(copy)
+    synonyms = syno(copy, errors)
 
     return (suggs, synonyms)
 
@@ -98,7 +98,7 @@ def similar(l, ind, fifty):
     return err
 
 
-def syno(s):
+def syno(s, errors):
     with open('function-words.txt') as fh:
         l3 = []
         for line in fh:
@@ -116,10 +116,11 @@ def syno(s):
     l2 = l2.split('.')
     for i in range(len(l2)):
         l2[i] = l2[i].split()
+    print(errors)
     toomuch = []
     for i in l2:
         for w in i:
-            if i.count(w) >= 3 and w not in toomuch and w not in l3:
+            if i.count(w) >= 3 and w not in toomuch and w not in l3 and w not in errors:
                 toomuch.append(w)
 
     with open('en_thesaurus.json') as fh:
