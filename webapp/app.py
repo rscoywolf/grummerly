@@ -16,8 +16,8 @@ def home():
 def result():
     inp = request.form.to_dict()
     text = inp['text']
+    print(text)
     s = spell(text)
-    print(s)
     return render_template("index.html", text=text, suggs=s)
 
 

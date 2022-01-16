@@ -87,6 +87,11 @@ p {
   color: #0d1321;
   font-size: 20px;
 }
+pre{
+  font-family: "Roboto", sans-serif;
+  color: #0d1321;
+  font-size: 20px;
+}
 </style>
   </head>
 
@@ -107,16 +112,20 @@ p {
 
     {% if suggs %}
     <h3>suggestions</h3>
-    {% for sugg in suggs%}
-    <p>{{sugg}}</p>
+      {% for typeSugg in suggs%}
+        {% if typeSugg%}
+          {% for word in typeSugg%}
+            <p>{{word}}</p>
 
-    {% endfor%}
+          {% endfor%}
+        {% endif%}
+      {% endfor%}
     {% endif %}
 
     
     {% if text %}
     <h3>original text:</h3>
-    <p>{{text}}</p>
+    <pre>{{text}}</pre>
     {% endif %}
     <footer>
       <p class="footer">
