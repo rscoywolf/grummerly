@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+    <title>grummerly</title>
+    <link rel="shortcut icon" href="/grummerly-logo.ico" type="image/x-icon"/>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+* {
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.buttons {
+  margin: 10%;
+  text-align: center;
+}
+
+.btn-hover {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+
+  border-radius: 50px;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+.btn-hover.color-5 {
+  background-image: linear-gradient(
+    to right,
+    #3e6259,
+    #3cba92,
+    #30dd8a,
+    #2bb673
+  );
+  box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+}
+
+body {
+  background-color: #eef0f2;
+}
+textarea {
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+}
+
+h2 {
+  color: #3e6259;
+  font-size: 70px;
+  font-family: "Roboto", sans-serif;
+}
+h3 {
+  color: #001011;
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+}
+
+#title {
+  color: #001011;
+  font-family: "Roboto", sans-serif;
+  font-size: 80px;
+}
+
+.footer {
+  padding-top: 100px;
+}
+
+p {
+  color: #0d1321;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+</style>
+  </head>
+
+  <body>
+    <h2>grummerly</h2>
+    <h3>make sure you have "Grammarly for Firefox" installed</h3>
+    <p>check your text now for mistakes and suggestions</p>
+    <form action="/result" method="POST">
+      <textarea
+        rows="20"
+        cols="100"
+        name="text"
+        placeholder="enter text"
+      ></textarea>
+      <br />
+      <input type="Submit" class="btn-hover color-5" value="submit" /></button>
+    </form>
+    {% if text %}
+    <p>{{text}}</p>
+    {% endif %}
+    {% if suggs %}
+    <h3>suggestions</h3>
+    {% for sugg in suggs %}
+    <p>{{sugg}}</p>
+
+    {% endfor %}
+    {% endif %}
+
+    <footer>
+      <p class="footer">
+        copyright
+        <script type="text/JavaScript">
+          document.write(new Date().getFullYear());
+        </script>
+        by ryan spurgeon, etc.
+      </p>
+    </footer>
+  </body>
+</html>
