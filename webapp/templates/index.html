@@ -75,7 +75,7 @@ h2 {
   font-size: 70px;
 }
 h3 {
-  color: #001011;
+  color: #0d1321;
   font-size: 30px;
 }
 
@@ -91,6 +91,12 @@ pre{
   font-family: "Roboto", sans-serif;
   color: #0d1321;
   font-size: 20px;
+}
+.spelling{
+  color: #e84855
+}
+.synonym{
+  color: #6290c8
 }
 </style>
   </head>
@@ -112,11 +118,15 @@ pre{
 
     {% if suggs %}
     <h3>suggestions</h3>
-      {% for typeSugg in suggs%}
-        {% if typeSugg%}
-          {% for word in typeSugg%}
-            <p>{{word}}</p>
-
+      {% for i in range(2)%}
+        {% if suggs[i] and i == 0%}
+          {% for word in suggs[i]%}
+            <p class='spelling'>{{word}}</p>
+      
+          {% endfor%}
+        {% elif suggs[i] and i == 1%}
+          {% for word in suggs[i]%}
+            <p class='synonym'>{{word}}</p>
           {% endfor%}
         {% endif%}
       {% endfor%}
